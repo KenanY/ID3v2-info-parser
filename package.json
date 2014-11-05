@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/theporchrat/id3v2-info-parser",
   "dependencies": {
-    "lodash": "~2.4.1",
+    "lodash.assign": "~2.4.1",
+    "lodash.contains": "~2.4.1",
     "stream-tokenizr": "~0.3.0"
   },
   "devDependencies": {

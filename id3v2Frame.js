@@ -1,4 +1,5 @@
-﻿var _ = require('lodash')
+﻿var contains = require('lodash.contains')
+  , extend = require('lodash.assign')
   , binary = require('./lib/binaryHelpers')
 
 var NOT_A_FRAME = 'Not an ID3 Tag frame'
@@ -85,7 +86,7 @@ Id3v2Frame.prototype._readData = function(buf) {
       , zero;
 
     if ( buf === null ) return;
-    if ( this.whitelist.length && !_.contains(this.whitelist, type)) return {}
+    if ( this.whitelist.length && !contains(this.whitelist, type)) return {}
 
     if ( type === 'T*' ){
         tag = binary
@@ -175,7 +176,7 @@ function getFrameFlags(ver, hdr){
             grouping:   binary.getBit(hdr, 9, ver3 ? 5 : 6)
         }
 
-    return ver3 ? common : _.extend(common,  {
+    return ver3 ? common : extend(common,  {
         unsync:      binary.getBit(hdr, 9, 1),
         data_length: binary.getBit(hdr, 9, 0)
     })
